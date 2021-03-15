@@ -1,6 +1,5 @@
 import first from './first.jpg';
 import './App.css';
-import sec from './sec.jpg';
 import React from "react";
 import {
     BrowserRouter as Router,
@@ -52,9 +51,9 @@ export default function App() {
 function Home() {
     return (
         <div>
-            <h2 class = 'box1'></h2>
-            <h2 class='box2'></h2>
-            <h2 class='box3'></h2>
+            <h2 class = 'box1'>1</h2>
+            <h2 class='box2'>2</h2>
+            <h2 class='box3'>3</h2>
 
         </div>
     );
