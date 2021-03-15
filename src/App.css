@@ -22,10 +22,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
 }
 
 .App-link {
   color: #61dafb;
+  text-align: center;
 }
 
 @keyframes App-logo-spin {
@@ -43,4 +45,22 @@
   width: 100px;
   height: 400px;
   display: flex;
+}
+
+.box1{
+  width: 100px;
+  background-color: red;
+  height: 100px;
+}
+
+.box2{
+  width: 100px;
+  background-color: blue;
+  height: 100px;
+}
+
+.box3{
+  width: 100px;
+  background-color: green;
+  height: 100px;
 }

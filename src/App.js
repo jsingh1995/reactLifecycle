@@ -1,3 +1,6 @@
+import first from './first.jpg';
+import './App.css';
+import sec from './sec.jpg';
 import React from "react";
 import {
     BrowserRouter as Router,
@@ -16,24 +19,30 @@ export default function App() {
                     <li>
                         <Link to="/">Home</Link>
                     </li>
+
                     <li>
-                        <Link to="/about">About</Link>
+                        <Link to="/topics">Data</Link>
                     </li>
+
                     <li>
-                        <Link to="/topics">Topics</Link>
+                        <Link to="/about">Cool Picture</Link>
                     </li>
+
                 </ul>
 
                 <Switch>
                     <Route path="/about">
                         <About />
                     </Route>
+
                     <Route path="/topics">
                         <Topics />
                     </Route>
+
                     <Route path="/">
                         <Home />
                     </Route>
+
                 </Switch>
             </div>
         </Router>
@@ -41,11 +50,18 @@ export default function App() {
 }
 
 function Home() {
-    return <h2>Home</h2>;
+    return (
+        <div>
+            <h2 class = 'box1'></h2>
+            <h2 class='box2'></h2>
+            <h2 class='box3'></h2>
+
+        </div>
+    );
 }
 
 function About() {
-    return <h2>About</h2>;
+    return <h2><img src= {first} alt="first" /></h2>;
 }
 
 function Topics() {
@@ -53,15 +69,20 @@ function Topics() {
 
     return (
         <div>
-            <h2>Topics</h2>
+            <h2>DATA</h2>
 
             <ul>
                 <li>
-                    <Link to={`${match.url}/components`}>Components</Link>
+                    <Link to={`${match.url}/Name = Jaspreet Singh, Age = 25, Color = Red, ID = 1`}>Name = Jaspreet Singh, Age = 25, Color = Red, ID = 1;</Link>
                 </li>
                 <li>
-                    <Link to={`${match.url}/props-v-state`}>
-                        Props v. State
+                    <Link to={`${match.url}/Name = John Cena, Age = 35, Color = Pink, ID = 2;`}>
+                        Name = John Cena, Age = 35, Color = Pink, ID = 2;
+                    </Link>
+                </li>
+                <li>
+                    <Link to={`${match.url}/Name = The Undertaker, Age = 37, Color = Black, ID = 3;`}>
+                        Name = The Undertaker, Age = 37, Color = Black, ID = 3;
                     </Link>
                 </li>
             </ul>
@@ -75,7 +96,7 @@ function Topics() {
                     <Topic />
                 </Route>
                 <Route path={match.path}>
-                    <h3>Please select a topic.</h3>
+                    <h3>Please select a one of the options.</h3>
                 </Route>
             </Switch>
         </div>
@@ -84,6 +105,6 @@ function Topics() {
 
 function Topic() {
     let { topicId } = useParams();
-    return <h3>Requested topic ID: {topicId}</h3>;
+    return <h3>{topicId}</h3>;
 }
 
