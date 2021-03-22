@@ -1,109 +1,116 @@
-import first from './first.jpg';
-import './App.css';
-import React from "react";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useRouteMatch,
-    useParams
-} from "react-router-dom";
+import React, { useState } from "react";
 
-export default function App() {
+// Importing app.css is css file to add styling
+import "./App.css";
+
+const App = () => {
+    //  Counter is a state initialized to 0
+    let [counter, setCounter] = useState(0)
+
+    // Function is called everytime increment button is clicked
+    const handleClick1 = () => {
+        // Counter state is incremented
+        setCounter(counter + 1)
+    }
+
+    // Function is called everytime decrement button is clicked
+    const handleClick2 = () => {
+        // Counter state is decremented
+        setCounter(counter = 0)
+
+
+
+    }
+
+    const handleClick3 = () => {
+        // Counter state is decremented
+        setCounter(counter = 1)
+
+
+    }
+
     return (
-        <Router>
-            <div>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '300%',
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            top: '-15%',
+        }}>
 
-                    <li>
-                        <Link to="/topics">Data</Link>
-                    </li>
-
-                    <li>
-                        <Link to="/about">Cool Picture</Link>
-                    </li>
-
-                </ul>
-
-                <Switch>
-                    <Route path="/about">
-                        <About />
-                    </Route>
-
-                    <Route path="/topics">
-                        <Topics />
-                    </Route>
-
-                    <Route path="/">
-                        <Home />
-                    </Route>
-
-                </Switch>
+            <div style={{
+                fontSize: '500%',
+                position: 'relative',
+                top: '10vh',
+            }}>
+                {counter}
             </div>
-        </Router>
-    );
-}
 
-function Home() {
-    return (
-        <div>
-            <h2 class = 'box1'>1</h2>
-            <h2 class='box2'>2</h2>
-            <h2 class='box3'>3</h2>
+            <div className="buttons">
+                <button style={{
+                    fontSize: '60%',
+                    position: 'absolute',
+                    top: '20vh',
+                    marginRight: '5px',
+                    backgroundColor: 'green',
+                    borderRadius: '8%',
+                    color: 'white',
+                }}
+                        onClick={handleClick1}>Increment</button>
+                <button style={{
+                    fontSize: '60%',
+                    position: 'absolute',
+                    top: '20vh',
+                    left: '80vh',
+                    marginLeft: '5px',
+                    backgroundColor: 'red',
+                    borderRadius: '8%',
+                    color: 'white',
+                }}
+                        onClick={handleClick2}> Reset </button>
+                <button style={{
+                    fontSize: '100%',
+                    position: 'absolute',
+                    top: '20vh',
+                    left: '30vh',
+                    marginLeft: '5px',
+                    backgroundColor: 'orange',
+                    borderRadius: '8%',
+                    color: 'white',
+                }}
+                        onClick={handleClick3}>_</button>
+                <button style={{
+                    fontSize: '100%',
+                    position: 'absolute',
+                    top: '30vh',
+                    left: '30vh',
+                    marginLeft: '5px',
+                    backgroundColor: 'orange',
+                    borderRadius: '8%',
+                    color: 'white',
+                }}
+                        onClick={handleClick3}>_</button>
+                <button style={{
+                    fontSize: '100%',
+                    position: 'absolute',
+                    top: '40vh',
+                    left: '30vh',
+                    marginLeft: '5px',
+                    backgroundColor: 'orange',
+                    borderRadius: '8%',
+                    color: 'white',
+                }}
+                        onClick={handleClick3}>_</button>
 
+
+
+            </div>
         </div>
-    );
+    )
 }
 
-function About() {
-    return <h2><img src= {first} alt="first" /></h2>;
-}
-
-function Topics() {
-    let match = useRouteMatch();
-
-    return (
-        <div>
-            <h2>DATA</h2>
-
-            <ul>
-                <li>
-                    <Link to={`${match.url}/Name = Jaspreet Singh, Age = 25, Color = Red, ID = 1`}>Name = Jaspreet Singh, Age = 25, Color = Red, ID = 1;</Link>
-                </li>
-                <li>
-                    <Link to={`${match.url}/Name = John Cena, Age = 35, Color = Pink, ID = 2;`}>
-                        Name = John Cena, Age = 35, Color = Pink, ID = 2;
-                    </Link>
-                </li>
-                <li>
-                    <Link to={`${match.url}/Name = The Undertaker, Age = 37, Color = Black, ID = 3;`}>
-                        Name = The Undertaker, Age = 37, Color = Black, ID = 3;
-                    </Link>
-                </li>
-            </ul>
-
-            {/* The Topics page has its own <Switch> with more routes
-          that build on the /topics URL path. You can think of the
-          2nd <Route> here as an "index" page for all topics, or
-          the page that is shown when no topic is selected */}
-            <Switch>
-                <Route path={`${match.path}/:topicId`}>
-                    <Topic />
-                </Route>
-                <Route path={match.path}>
-                    <h3>Please select a one of the options.</h3>
-                </Route>
-            </Switch>
-        </div>
-    );
-}
-
-function Topic() {
-    let { topicId } = useParams();
-    return <h3>{topicId}</h3>;
-}
-
+export default App
